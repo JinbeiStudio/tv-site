@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jinbei Studio TV</title>
+<meta name="description" content="Download Jinbei Studio for your TV, computer or phone, and how to install it.">
+<link rel="icon" href="logo.png">
+<style>
+  :root {
+    --bg: #141416;
+    --text: #fff;
+    --dim: rgba(255, 255, 255, 0.62);
+    --glass: rgba(36, 36, 40, 0.62);
+    --accent: #0a84ff;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font: 17px/1.5 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", Roboto, sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(circle at 15% 8%, rgba(10, 132, 255, 0.38), transparent 40%),
+      radial-gradient(circle at 85% 30%, rgba(191, 90, 242, 0.3), transparent 42%),
+      radial-gradient(circle at 40% 90%, rgba(48, 209, 88, 0.14), transparent 40%),
+      var(--bg);
+    background-attachment: fixed;
+  }
+  [data-lang="en"] .fr, [data-lang="fr"] .en { display: none !important; }
+  main { max-width: 1040px; margin: 0 auto; padding: 0 20px 80px; }
+  header { display: flex; align-items: center; justify-content: space-between; padding: 22px 0; }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 600; }
+  .brand img { width: 44px; height: 44px; object-fit: contain; }
+  .lang { display: flex; gap: 6px; }
+  .lang button {
+    font: inherit; font-size: 14px; color: var(--text); cursor: pointer;
+    padding: 6px 14px; border-radius: 999px; border: 0; background: rgba(255, 255, 255, 0.1);
+  }
+  .lang button[aria-pressed="true"] { background: #fff; color: #000; }
+  h1 { font-size: clamp(34px, 6vw, 60px); line-height: 1.05; letter-spacing: -0.02em; margin: 40px 0 12px; text-align: center; }
+  .lead { text-align: center; color: var(--dim); font-size: clamp(17px, 2.2vw, 21px); max-width: 640px; margin: 0 auto 40px; }
+  h2 { font-size: clamp(24px, 3.6vw, 34px); letter-spacing: -0.01em; margin: 64px 0 18px; }
+  .glass {
+    background: var(--glass);
+    backdrop-filter: blur(40px) saturate(1.8);
+    -webkit-backdrop-filter: blur(40px) saturate(1.8);
+    border-radius: 24px;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 20px 40px rgba(0, 0, 0, 0.4);
+  }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 16px; }
+  .card { padding: 22px; display: flex; flex-direction: column; gap: 8px; }
+  .card h3 { margin: 0; font-size: 21px; }
+  .card p { margin: 0; color: var(--dim); font-size: 15px; }
+  .actions { margin-top: auto; padding-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .btn {
+    display: inline-block; padding: 11px 20px; border-radius: 999px; font-size: 15px; font-weight: 600;
+    text-decoration: none; color: #000; background: rgba(255, 255, 255, 0.95);
+  }
+  .btn.alt { color: #fff; background: rgba(255, 255, 255, 0.14); }
+  .btn:hover, .btn:focus-visible { outline: 3px solid rgba(255, 255, 255, 0.5); outline-offset: 2px; }
+  details { margin: 0 0 12px; padding: 4px 22px; }
+  summary { cursor: pointer; padding: 16px 0; font-size: 20px; font-weight: 600; list-style: none; display: flex; justify-content: space-between; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--dim); font-weight: 400; }
+  details[open] summary::after { content: "–"; }
+  details .body { padding: 0 0 18px; color: rgba(255, 255, 255, 0.86); }
+  details ol { margin: 8px 0 0; padding-left: 22px; }
+  details li { margin: 8px 0; }
+  .note { margin-top: 12px; padding: 12px 14px; border-radius: 14px; background: rgba(255, 255, 255, 0.07); color: var(--dim); font-size: 15px; }
+  code { padding: 2px 7px; border-radius: 8px; background: rgba(255, 255, 255, 0.12); font-size: 0.92em; word-break: break-all; }
+  .steps { padding: 4px 22px 22px; }
+  .steps ol { padding-left: 22px; }
+  .steps li { margin: 10px 0; }
+  a { color: #64b5ff; }
+  footer { margin-top: 64px; text-align: center; color: var(--dim); font-size: 14px; }
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div class="brand"><img src="logo.png" alt=""><span>Jinbei Studio</span></div>
+  <div class="lang" role="group" aria-label="Language">
+    <button type="button" data-set="en" aria-pressed="true">EN</button>
+    <button type="button" data-set="fr" aria-pressed="false">FR</button>
+  </div>
+</header>
+
+<h1>
+  <span class="en">Your films and series, on every screen.</span>
+  <span class="fr">Vos films et séries, sur tous vos écrans.</span>
+</h1>
+<p class="lead">
+  <span class="en">Pick your device, download the app, and follow the steps below. Updates come by themselves on computers and phones.</span>
+  <span class="fr">Choisissez votre appareil, téléchargez l’application et suivez les étapes ci-dessous. Les mises à jour se font toutes seules sur ordinateur et téléphone.</span>
+</p>
+
+<h2 id="download"><span class="en">Download</span><span class="fr">Télécharger</span></h2>
+<div class="grid">
+  <div class="card glass">
+    <h3>Mac</h3>
+    <p><span class="en">Apple Silicon (M1 and newer) or Intel.</span><span class="fr">Apple Silicon (M1 et plus récent) ou Intel.</span></p>
+    <div class="actions">
+      <a class="btn" data-asset="osx-arm64\.zip$" href="https://github.com/JinbeiStudio/AIOStreams/releases/latest">Apple Silicon</a>
+      <a class="btn alt" data-asset="osx-x64\.zip$" href="https://github.com/JinbeiStudio/AIOStreams/releases/latest">Intel</a>
+      <a class="btn alt" href="#mac"><span class="en">How to install</span><span class="fr">Installer</span></a>
+    </div>
+  </div>
+  <div class="card glass">
+    <h3>Windows</h3>
+    <p><span class="en">Windows 10 and 11.</span><span class="fr">Windows 10 et 11.</span></p>
+    <div class="actions">
+      <a class="btn" data-asset="win-x64\.exe$" href="https://github.com/JinbeiStudio/AIOStreams/releases/latest">Installer</a>
+      <a class="btn alt" href="#windows"><span class="en">How to install</span><span class="fr">Installer</span></a>
+    </div>
+  </div>
+  <div class="card glass">
+    <h3>Fire TV Stick</h3>
+    <p><span class="en">Amazon Fire TV Stick and Fire TV.</span><span class="fr">Amazon Fire TV Stick et Fire TV.</span></p>
+    <div class="actions">
+      <a class="btn" data-asset="android-armeabi-v7a\.apk$" href="https://github.com/JinbeiStudio/AIOStreams/releases/latest">APK</a>
+      <a class="btn alt" href="#firetv"><span class="en">How to install</span><span class="fr">Installer</span></a>
+    </div>
+  </div>
+  <div class="card glass">
+    <h3>Android</h3>
+    <p><span class="en">Phones, tablets and Android TV.</span><span class="fr">Téléphones, tablettes et Android TV.</span></p>
+    <div class="actions">
+      <a class="btn" data-asset="android-arm64-v8a\.apk$" href="https://github.com/JinbeiStudio/AIOStreams/releases/latest">APK</a>
+      <a class="btn alt" href="#android"><span class="en">How to install</span><span class="fr">Installer</span></a>
+    </div>
+  </div>
+  <div class="card glass">
+    <h3>LG TV (webOS)</h3>
+    <p><span class="en">Needs the TV’s developer mode.</span><span class="fr">Demande le mode développeur de la TV.</span></p>
+    <div class="actions">
+      <a class="btn" data-asset="webos.*\.ipk$" href="https://github.com/JinbeiStudio/AIOStreams/releases/latest">IPK</a>
+      <a class="btn alt" href="#lg"><span class="en">How to install</span><span class="fr">Installer</span></a>
+    </div>
+  </div>
+  <div class="card glass">
+    <h3>Samsung TV (Tizen)</h3>
+    <p><span class="en">The most technical one.</span><span class="fr">La plus technique.</span></p>
+    <div class="actions">
+      <a class="btn" data-asset="tizen.*\.wgt$" href="https://github.com/JinbeiStudio/AIOStreams/releases/latest">WGT</a>
+      <a class="btn alt" href="#samsung"><span class="en">How to install</span><span class="fr">Installer</span></a>
+    </div>
+  </div>
+  <div class="card glass">
+    <h3>Linux</h3>
+    <p>Flatpak, x64 / arm64.</p>
+    <div class="actions">
+      <a class="btn" data-asset="linux-x64\.flatpak$" href="https://github.com/JinbeiStudio/AIOStreams/releases/latest">x64</a>
+      <a class="btn alt" data-asset="linux-arm64\.flatpak$" href="https://github.com/JinbeiStudio/AIOStreams/releases/latest">arm64</a>
+      <a class="btn alt" href="#linux"><span class="en">How to install</span><span class="fr">Installer</span></a>
+    </div>
+  </div>
+</div>
+
+<h2 id="install"><span class="en">How to install</span><span class="fr">Comment l’installer</span></h2>
+
+<details class="glass" id="mac">
+  <summary>Mac</summary>
+  <div class="body"><ol class="en">
+    <li>Download the file for your Mac: <b>Apple Silicon</b> if it has an M chip, otherwise <b>Intel</b>. (Apple menu → About This Mac tells you.)</li>
+    <li>Open the downloaded <code>.zip</code>, then drag <b>Jinbei Studio</b> into your <b>Applications</b> folder.</li>
+    <li>The first time, <b>right-click the app → Open → Open</b>. macOS warns about it because the app is not from the App Store; this is expected.</li>
+    <li>If it still refuses: System Settings → Privacy &amp; Security → scroll down → <b>Open Anyway</b>.</li>
+  </ol><ol class="fr">
+    <li>Téléchargez le fichier de votre Mac : <b>Apple Silicon</b> s’il a une puce M, sinon <b>Intel</b>. (Menu Pomme → À propos de ce Mac l’indique.)</li>
+    <li>Ouvrez le fichier <code>.zip</code>, puis glissez <b>Jinbei Studio</b> dans votre dossier <b>Applications</b>.</li>
+    <li>La première fois, faites <b>clic droit sur l’app → Ouvrir → Ouvrir</b>. macOS affiche un avertissement car l’app ne vient pas de l’App Store ; c’est normal.</li>
+    <li>Si c’est encore refusé : Réglages Système → Confidentialité et sécurité → en bas → <b>Ouvrir quand même</b>.</li>
+  </ol></div>
+</details>
+
+<details class="glass" id="windows">
+  <summary>Windows</summary>
+  <div class="body"><ol class="en">
+    <li>Download the installer and open it.</li>
+    <li>If Windows shows “Windows protected your PC”, click <b>More info → Run anyway</b>. The app is not signed by Microsoft; this is expected.</li>
+    <li>Follow the installer, then open <b>Jinbei Studio</b> from the Start menu.</li>
+  </ol><ol class="fr">
+    <li>Téléchargez le programme d’installation et ouvrez-le.</li>
+    <li>Si Windows affiche « Windows a protégé votre ordinateur », cliquez sur <b>Informations complémentaires → Exécuter quand même</b>. L’app n’est pas signée par Microsoft ; c’est normal.</li>
+    <li>Suivez l’installation, puis ouvrez <b>Jinbei Studio</b> depuis le menu Démarrer.</li>
+  </ol></div>
+</details>
+
+<details class="glass" id="firetv">
+  <summary>Fire TV Stick</summary>
+  <div class="body"><ol class="en">
+    <li>On the Fire TV, install the free <b>Downloader</b> app (search for it in the Appstore).</li>
+    <li>Go to <b>Settings → My Fire TV → Developer options</b> and turn on <b>Install unknown apps</b> for <b>Downloader</b>. (If you don’t see Developer options: Settings → My Fire TV → About, then press OK on the device name seven times.)</li>
+    <li>Open <b>Downloader</b> and type this address in its box: <code class="dl" data-asset="android-armeabi-v7a\.apk$">github.com/JinbeiStudio/AIOStreams/releases/latest</code>, then <b>Go</b>. On the page that opens, choose the file ending in <code>armeabi-v7a.apk</code>.</li>
+    <li>When the download ends, choose <b>Install</b>, then <b>Open</b>.</li>
+  </ol>
+  <div class="note en">Not sure which Fire TV you have? Use the <code>armeabi-v7a</code> file: it works on all Fire TV Sticks.</div>
+  <ol class="fr">
+    <li>Sur la Fire TV, installez l’app gratuite <b>Downloader</b> (cherchez-la dans l’Appstore).</li>
+    <li>Allez dans <b>Paramètres → Ma Fire TV → Options pour les développeurs</b> et activez <b>Installer des applications inconnues</b> pour <b>Downloader</b>. (Si vous ne voyez pas les options développeur : Paramètres → Ma Fire TV → À propos, puis appuyez sept fois sur OK sur le nom de l’appareil.)</li>
+    <li>Ouvrez <b>Downloader</b> et saisissez cette adresse : <code class="dl" data-asset="android-armeabi-v7a\.apk$">github.com/JinbeiStudio/AIOStreams/releases/latest</code>, puis <b>Go</b>. Sur la page qui s’ouvre, choisissez le fichier qui finit par <code>armeabi-v7a.apk</code>.</li>
+    <li>Une fois le téléchargement terminé, choisissez <b>Installer</b>, puis <b>Ouvrir</b>.</li>
+  </ol>
+  <div class="note fr">Vous ne savez pas quelle Fire TV vous avez ? Prenez le fichier <code>armeabi-v7a</code> : il fonctionne sur toutes les Fire TV Stick.</div></div>
+</details>
+
+<details class="glass" id="android">
+  <summary>Android (phone, tablet, Android TV)</summary>
+  <div class="body"><ol class="en">
+    <li>Download the <code>arm64-v8a.apk</code> file (it suits almost every phone and tablet made in the last years).</li>
+    <li>Open it. Android asks to allow installs from your browser or file manager: accept, then <b>Install</b>.</li>
+    <li>If Play Protect warns about the app, choose <b>Install anyway</b>.</li>
+    <li>On Android TV or Google TV, install <b>Downloader</b> and follow the Fire TV steps above.</li>
+  </ol><ol class="fr">
+    <li>Téléchargez le fichier <code>arm64-v8a.apk</code> (il convient à presque tous les téléphones et tablettes récents).</li>
+    <li>Ouvrez-le. Android demande d’autoriser les installations depuis votre navigateur ou gestionnaire de fichiers : acceptez, puis <b>Installer</b>.</li>
+    <li>Si Play Protect avertit à propos de l’app, choisissez <b>Installer quand même</b>.</li>
+    <li>Sur Android TV ou Google TV, installez <b>Downloader</b> et suivez les étapes de la Fire TV ci-dessus.</li>
+  </ol></div>
+</details>
+
+<details class="glass" id="lg">
+  <summary>LG TV (webOS)</summary>
+  <div class="body"><ol class="en">
+    <li>On the TV, open the LG Content Store, install <b>Developer Mode</b>, and sign in with a free LG developer account (<a href="https://webostv.developer.lge.com/" target="_blank" rel="noopener">webostv.developer.lge.com</a>).</li>
+    <li>In the <b>Developer Mode</b> app turn on <b>Dev Mode Status</b> and <b>Key Server</b>. The TV restarts. Note the TV’s IP address shown there.</li>
+    <li>On a computer, install <b>Dev Manager</b> (<a href="https://github.com/webosbrew/dev-manager-desktop" target="_blank" rel="noopener">webosbrew/dev-manager-desktop</a>), add your TV with its IP address, and follow its pairing steps.</li>
+    <li>In Dev Manager, open the <b>Apps</b> tab, choose <b>Install IPK</b> and select the downloaded <code>.ipk</code> file.</li>
+    <li>Open <b>Jinbei Studio</b> from the TV’s app list.</li>
+  </ol>
+  <div class="note en">The developer session expires after a while: open the Developer Mode app on the TV and extend it when it says so. Apps you installed stay.</div>
+  <ol class="fr">
+    <li>Sur la TV, ouvrez le LG Content Store, installez <b>Developer Mode</b>, et connectez-vous avec un compte développeur LG gratuit (<a href="https://webostv.developer.lge.com/" target="_blank" rel="noopener">webostv.developer.lge.com</a>).</li>
+    <li>Dans l’app <b>Developer Mode</b>, activez <b>Dev Mode Status</b> et <b>Key Server</b>. La TV redémarre. Notez l’adresse IP de la TV affichée.</li>
+    <li>Sur un ordinateur, installez <b>Dev Manager</b> (<a href="https://github.com/webosbrew/dev-manager-desktop" target="_blank" rel="noopener">webosbrew/dev-manager-desktop</a>), ajoutez votre TV avec son adresse IP et suivez l’appairage.</li>
+    <li>Dans Dev Manager, onglet <b>Apps</b>, choisissez <b>Install IPK</b> et sélectionnez le fichier <code>.ipk</code> téléchargé.</li>
+    <li>Ouvrez <b>Jinbei Studio</b> depuis la liste des apps de la TV.</li>
+  </ol>
+  <div class="note fr">La session développeur expire au bout d’un moment : ouvrez l’app Developer Mode sur la TV et prolongez-la quand elle le demande. Les apps installées restent.</div></div>
+</details>
+
+<details class="glass" id="samsung">
+  <summary>Samsung TV (Tizen)</summary>
+  <div class="body"><ol class="en">
+    <li>On the TV: Apps → press <b>1 2 3 4 5</b> → turn on <b>Developer mode</b> and enter your computer’s IP address. Restart the TV.</li>
+    <li>On a computer, install <b>Tizen Studio</b> (<a href="https://developer.tizen.org/development/tizen-studio/download" target="_blank" rel="noopener">developer.tizen.org</a>) with the <b>TV Extensions</b>.</li>
+    <li>In Device Manager, connect to the TV’s IP address. In Certificate Manager, create a <b>Samsung certificate</b> (free Samsung account) that includes your TV.</li>
+    <li>Resign and install the downloaded <code>.wgt</code> with your certificate (Tizen Studio: <b>Tools → Package Manager</b>, or the <code>tizen install</code> command).</li>
+  </ol>
+  <div class="note en">This is the longest way in. Ask Julien for help if you get stuck.</div>
+  <ol class="fr">
+    <li>Sur la TV : Apps → tapez <b>1 2 3 4 5</b> → activez le <b>mode développeur</b> et saisissez l’adresse IP de votre ordinateur. Redémarrez la TV.</li>
+    <li>Sur un ordinateur, installez <b>Tizen Studio</b> (<a href="https://developer.tizen.org/development/tizen-studio/download" target="_blank" rel="noopener">developer.tizen.org</a>) avec les <b>TV Extensions</b>.</li>
+    <li>Dans Device Manager, connectez-vous à l’adresse IP de la TV. Dans Certificate Manager, créez un <b>certificat Samsung</b> (compte Samsung gratuit) incluant votre TV.</li>
+    <li>Resignez et installez le fichier <code>.wgt</code> téléchargé avec votre certificat (Tizen Studio : <b>Tools → Package Manager</b>, ou la commande <code>tizen install</code>).</li>
+  </ol>
+  <div class="note fr">C’est la méthode la plus longue. Demandez de l’aide à Julien si vous bloquez.</div></div>
+</details>
+
+<details class="glass" id="linux">
+  <summary>Linux</summary>
+  <div class="body"><ol class="en">
+    <li>Download the <code>.flatpak</code> file for your processor.</li>
+    <li>In a terminal: <code>flatpak install --user ./jinbei-studio-linux-x64.flatpak</code> (use the name of the file you downloaded).</li>
+    <li>Run it with <code>flatpak run</code> followed by the app’s name, or from your applications menu.</li>
+  </ol><ol class="fr">
+    <li>Téléchargez le fichier <code>.flatpak</code> correspondant à votre processeur.</li>
+    <li>Dans un terminal : <code>flatpak install --user ./jinbei-studio-linux-x64.flatpak</code> (avec le nom du fichier téléchargé).</li>
+    <li>Lancez-la depuis le menu des applications.</li>
+  </ol></div>
+</details>
+
+<h2 id="use"><span class="en">How to use it</span><span class="fr">Comment l’utiliser</span></h2>
+<div class="steps glass">
+  <ol class="en">
+    <li>Open the app. On the first screen, <b>Add your profile</b>: type the profile address Julien gave you, then <b>Connect</b>.</li>
+    <li>Choose your name and sign in with the PIN or password you were given.</li>
+    <li>Browse the home screen: the rows follow what’s popular and what you were watching. <b>Continue Watching</b> brings you back where you stopped.</li>
+    <li>Choose a film or series. Press <b>Play</b> to start; for a series, pick the season and episode.</li>
+    <li>In the player, use the menus for <b>subtitles</b> and <b>audio language</b>. Press <b>Back</b> to leave.</li>
+    <li>With a TV remote: arrows move, <b>OK</b> chooses, <b>Back</b> goes back. With a mouse or phone: click or tap.</li>
+  </ol>
+  <ol class="fr">
+    <li>Ouvrez l’app. Sur le premier écran, <b>Ajouter votre profil</b> : saisissez l’adresse de profil donnée par Julien, puis <b>Se connecter</b>.</li>
+    <li>Choisissez votre nom et connectez-vous avec le code PIN ou le mot de passe qu’on vous a donné.</li>
+    <li>Parcourez l’accueil : les rangées suivent ce qui est populaire et ce que vous regardiez. <b>Reprendre la lecture</b> vous ramène là où vous vous étiez arrêté.</li>
+    <li>Choisissez un film ou une série. Appuyez sur <b>Lecture</b> ; pour une série, choisissez la saison et l’épisode.</li>
+    <li>Dans le lecteur, utilisez les menus <b>sous-titres</b> et <b>langue audio</b>. Appuyez sur <b>Retour</b> pour quitter.</li>
+    <li>Avec une télécommande de TV : les flèches déplacent, <b>OK</b> choisit, <b>Retour</b> revient. Avec une souris ou un téléphone : cliquez ou touchez.</li>
+  </ol>
+</div>
+
+<footer>
+  <span class="en">Need help? Ask Julien.</span><span class="fr">Besoin d’aide ? Demandez à Julien.</span>
+</footer>
+</main>
+
+<script>
+  // Language: the browser's, unless one was picked before.
+  (function () {
+    var root = document.documentElement, saved = null;
+    try { saved = localStorage.getItem('lang'); } catch (e) {}
+    function set(lang) {
+      root.setAttribute('data-lang', lang);
+      root.lang = lang;
+      document.querySelectorAll('.lang button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.set === lang)); });
+      try { localStorage.setItem('lang', lang); } catch (e) {}
+    }
+    set(saved || ((navigator.language || 'en').slice(0, 2) === 'fr' ? 'fr' : 'en'));
+    document.querySelectorAll('.lang button').forEach(function (b) { b.onclick = function () { set(b.dataset.set); }; });
+    // A link from the install steps opens its section.
+    function open() { var d = document.querySelector(location.hash + '.glass'); if (d && d.tagName === 'DETAILS') d.open = true; }
+    window.addEventListener('hashchange', open);
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) { a.addEventListener('click', function () { var d = document.querySelector(a.getAttribute('href')); if (d && d.tagName === 'DETAILS') d.open = true; }); });
+    if (location.hash) try { open(); } catch (e) {}
+  })();
+
+  // Download buttons point at the newest release's files; the releases page stays as the fallback.
+  fetch('https://api.github.com/repos/JinbeiStudio/AIOStreams/releases/latest')
+    .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+    .then(function (release) {
+      document.querySelectorAll('a[data-asset]').forEach(function (a) {
+        var pattern = new RegExp(a.dataset.asset), asset = release.assets.find(function (x) { return pattern.test(x.name); });
+        if (asset) a.href = asset.browser_download_url;
+      });
+    })
+    .catch(function () {});
+</script>
+</body>
+</html>
