@@ -114,6 +114,24 @@
   .shot img { display: block; width: 100%; height: auto; }
   .shot figcaption { padding: 14px 22px; background: #fff; color: var(--mute); font-size: 15px; text-align: center; }
 
+  /* The features, one big idea per tile, each with a small moving picture. */
+  #features { background: #fff; }
+  .fgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; }
+  .fc { background: var(--light); border-radius: 28px; padding: 30px 28px 32px; overflow: hidden; }
+  .fc .fv { height: 132px; display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+  .fc h3 { margin: 0 0 8px; font-size: 28px; line-height: 1.1; letter-spacing: -0.025em; }
+  .fc p { margin: 0; font-size: 18px; color: var(--mute); }
+  .fc .tag { padding: 7px 14px; border-radius: 999px; background: #fff; font-size: 14px; font-weight: 600; animation: chip 8s ease-in-out infinite; }
+  .fc .tag:nth-child(2) { animation-delay: 1.5s; } .fc .tag:nth-child(3) { animation-delay: 3s; } .fc .tag:nth-child(4) { animation-delay: 4.5s; }
+  .cal { display: grid; grid-template-columns: repeat(7, 22px); gap: 5px; }
+  .cal i { width: 22px; height: 22px; border-radius: 7px; background: #fff; }
+  .cal i.hot { background: var(--blue); animation: pulse 3s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.25); box-shadow: 0 0 16px rgba(0, 113, 227, 0.6); } }
+  .duo { display: flex; } .duo i { width: 58px; height: 58px; border-radius: 50%; border: 4px solid var(--light); animation: pulse 3.4s ease-in-out infinite; }
+  .duo i:nth-child(1) { background: linear-gradient(135deg, #34c8ff, #0a3d91); } .duo i:nth-child(2) { background: linear-gradient(135deg, #ff9f0a, #ff375f); margin-left: -14px; animation-delay: 1.7s; }
+  .dpad { position: relative; width: 104px; height: 104px; border-radius: 50%; background: #fff; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06); }
+  .dpad::before { content: ""; position: absolute; inset: 36px; border-radius: 50%; background: var(--blue); animation: pulse 3s ease-in-out infinite; }
+
   /* Things settle into place as they scroll into view. */
   .js .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
   .js .reveal.in { opacity: 1; transform: none; }
@@ -257,6 +275,45 @@
         <div class="pic"><div class="bar2"><i></i></div></div>
         <h3><span class="en">Right where you stopped</span><span class="fr">Là où vous vous étiez arrêté</span></h3>
         <p><span class="en">Start on the TV, finish on your phone.</span><span class="fr">Commencez sur la TV, terminez sur votre téléphone.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <h2 class="reveal"><span class="en">Everything you’d want.<br>Nothing you wouldn’t.</span><span class="fr">Tout ce que vous voulez.<br>Rien de superflu.</span></h2>
+    <p class="sub reveal"><span class="en">A simple, beautiful way to find something and press play.</span><span class="fr">Une façon simple et belle de trouver quoi regarder et lancer la lecture.</span></p>
+    <div class="fgrid">
+      <div class="fc reveal">
+        <div class="fv"><span class="tag">4K</span><span class="tag">HDR</span><span class="tag">Atmos</span><span class="tag">Blu-ray Remux</span></div>
+        <h3><span class="en">Always the best version.</span><span class="fr">Toujours la meilleure version.</span></h3>
+        <p><span class="en">It picks the best quality for your screen and names it in plain words. Not convinced? Choose another version in one tap.</span><span class="fr">Elle choisit la meilleure qualité pour votre écran et la nomme en mots simples. Pas convaincu ? Choisissez une autre version en un geste.</span></p>
+      </div>
+      <div class="fc reveal">
+        <div class="fv"><span class="tag">Trending</span><span class="tag">New</span><span class="tag">Popular</span><span class="tag">Next up</span></div>
+        <h3><span class="en">Catalogs that follow you.</span><span class="fr">Des catalogues qui vous suivent.</span></h3>
+        <p><span class="en">Rows for what’s popular, what’s new and what comes next in your series, so there’s always something to watch.</span><span class="fr">Des rangées pour ce qui est populaire, nouveau, et la suite de vos séries : il y a toujours quelque chose à regarder.</span></p>
+      </div>
+      <div class="fc reveal">
+        <div class="fv"><div class="cal"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="hot"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+        <h3><span class="en">Never miss an episode.</span><span class="fr">Ne ratez aucun épisode.</span></h3>
+        <p><span class="en">A calendar of what’s coming, and Next up takes you straight to the following episode.</span><span class="fr">Un calendrier de ce qui arrive, et Épisode suivant vous mène directement à la suite.</span></p>
+      </div>
+      <div class="fc reveal">
+        <div class="fv"><div class="duo"><i></i><i></i></div></div>
+        <h3><span class="en">Watch together.</span><span class="fr">Regardez ensemble.</span></h3>
+        <p><span class="en">Start a session and watch in sync with family, wherever they are.</span><span class="fr">Lancez une session et regardez en même temps que votre famille, où qu’elle soit.</span></p>
+      </div>
+      <div class="fc reveal">
+        <div class="fv"><span class="tag">Library</span><span class="tag">Playlists</span><span class="tag">Downloads</span></div>
+        <h3><span class="en">Your library, with you.</span><span class="fr">Votre bibliothèque, avec vous.</span></h3>
+        <p><span class="en">Build playlists, find everything you saved, and download a film before the trip.</span><span class="fr">Créez des playlists, retrouvez tout ce que vous avez gardé, et téléchargez un film avant le voyage.</span></p>
+      </div>
+      <div class="fc reveal">
+        <div class="fv"><div class="dpad"></div></div>
+        <h3><span class="en">Made for the remote.</span><span class="fr">Pensée pour la télécommande.</span></h3>
+        <p><span class="en">Arrows, OK, Back. Or point and click. It feels the same on every screen.</span><span class="fr">Flèches, OK, Retour. Ou pointez et cliquez. C’est pareil sur tous les écrans.</span></p>
       </div>
     </div>
   </div>
