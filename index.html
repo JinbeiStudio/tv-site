@@ -78,6 +78,15 @@
   .tv .c:nth-child(4) { background: linear-gradient(135deg, #6a4cff, #1d1d6b); animation-delay: 6s; }
   .tv .c:nth-child(5) { background: linear-gradient(135deg, #ff375f, #5a0f3c); animation-delay: 8s; }
   .tv .c:nth-child(6) { background: linear-gradient(135deg, #30d158, #0a6b6b); animation-delay: 10s; }
+  .tv .menu { position: absolute; z-index: 3; left: 1.6cqw; top: 2.4cqh; bottom: 2.4cqh; width: 19cqw; padding: 1.4cqw 1cqw; border-radius: 2.2cqw; background: rgba(14, 14, 18, 0.86); backdrop-filter: blur(24px) saturate(1.6); -webkit-backdrop-filter: blur(24px) saturate(1.6); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12), 0 20px 50px rgba(0, 0, 0, 0.5); transform: translateX(-120%); animation: menu 22s ease-in-out infinite; }
+  .tv .menu .who { display: flex; align-items: center; gap: 0.8cqw; font-size: 1.15cqw; font-weight: 600; margin-bottom: 1.4cqh; }
+  .tv .menu .who i { width: 2.6cqw; height: 2.6cqw; border-radius: 50%; background: linear-gradient(135deg, #34c8ff, #0a3d91); }
+  .tv .menu .who span { margin-left: auto; font-weight: 400; color: rgba(255, 255, 255, 0.55); font-size: 0.95cqw; }
+  .tv .menu li { list-style: none; display: flex; align-items: center; gap: 0.9cqw; padding: 0.95cqh 1cqw; border-radius: 999px; font-size: 1.15cqw; color: rgba(255, 255, 255, 0.88); }
+  .tv .menu li::before { content: ""; width: 1.1cqw; height: 1.1cqw; border: 0.14cqw solid currentColor; border-radius: 0.3cqw; opacity: 0.8; flex: none; }
+  .tv .menu li.on { background: #fff; color: #000; font-weight: 600; }
+  .tv .menu ul { margin: 0; padding: 0; }
+  @keyframes menu { 0%, 4% { transform: translateX(-120%); } 11%, 40% { transform: translateX(0); } 47%, 100% { transform: translateX(-120%); } }
   @keyframes scrollpage { 0%, 14% { transform: translateY(0); } 58%, 100% { transform: translateY(-72cqh); } }
   .tv::after { content: ""; position: absolute; left: 20%; right: 20%; bottom: -22px; height: 22px; background: linear-gradient(180deg, #1a1a1c, transparent); border-radius: 0 0 20px 20px; }
   @keyframes drift { from { transform: translate(-3%, -2%) scale(1); } to { transform: translate(4%, 3%) scale(1.12); } }
@@ -99,6 +108,11 @@
   .bar2 { width: 72%; height: 8px; border-radius: 6px; background: #e5e5ea; overflow: hidden; }
   .bar2 i { display: block; height: 100%; width: 0; background: var(--blue); border-radius: 6px; animation: fill 5s ease-in-out infinite; }
   @keyframes fill { 0% { width: 6%; } 70%, 100% { width: 62%; } }
+
+  .shot { margin: 0 auto; max-width: 1080px; padding: 0 22px; }
+  .shot figure { margin: 0; border-radius: 28px; overflow: hidden; background: #000; box-shadow: 0 40px 90px rgba(0, 0, 0, 0.25); }
+  .shot img { display: block; width: 100%; height: auto; }
+  .shot figcaption { padding: 14px 22px; background: #fff; color: var(--mute); font-size: 15px; text-align: center; }
 
   /* Things settle into place as they scroll into view. */
   .js .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
@@ -186,6 +200,9 @@
 
     <div class="tv reveal" aria-hidden="true">
       <div class="screen">
+        <div class="menu"><div class="who"><i></i>Jinbei Studio<span>11:54</span></div><ul>
+          <li class="on">Home</li><li>Discover</li><li>Search</li><li>Library</li><li>Calendar</li><li>History</li><li>Playlists</li><li>Watch together</li><li>Downloads</li><li>Settings</li>
+        </ul></div>
         <div class="page">
           <div class="hero2">
             <div class="art"></div><div class="shade"></div>
@@ -211,6 +228,15 @@
     </div>
   </div>
 </div>
+
+<section id="see">
+  <div class="shot reveal">
+    <figure>
+      <img src="img/menu.jpg" alt="The app's menu open over the home screen" loading="lazy">
+      <figcaption><span class="en">The menu, one tap away: home, search, your library, downloads and more.</span><span class="fr">Le menu, à portée de main : accueil, recherche, bibliothèque, téléchargements et plus.</span></figcaption>
+    </figure>
+  </div>
+</section>
 
 <section id="why">
   <div class="wrap">
