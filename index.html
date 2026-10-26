@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-lang="en">
+<html lang="fr" data-lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -208,8 +208,8 @@
       <a class="hide" href="#install"><span class="en">Install</span><span class="fr">Installer</span></a>
       <a class="hide" href="#use"><span class="en">Use</span><span class="fr">Utiliser</span></a>
       <div class="lang" role="group" aria-label="Language">
-        <button type="button" data-set="en" aria-pressed="true">EN</button>
-        <button type="button" data-set="fr" aria-pressed="false">FR</button>
+        <button type="button" data-set="en" aria-pressed="false">EN</button>
+        <button type="button" data-set="fr" aria-pressed="true">FR</button>
       </div>
       <a class="pill" href="#download"><span class="en">Download</span><span class="fr">Télécharger</span></a>
     </nav>
@@ -584,7 +584,7 @@
 </footer>
 
 <script>
-  // Language: the browser's, unless one was picked before.
+  // Language: French, unless one was picked before.
   (function () {
     var root = document.documentElement, saved = null;
     try { saved = localStorage.getItem('lang'); } catch (e) {}
@@ -594,7 +594,7 @@
       document.querySelectorAll('.lang button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.set === lang)); });
       try { localStorage.setItem('lang', lang); } catch (e) {}
     }
-    set(saved || ((navigator.language || 'en').slice(0, 2) === 'fr' ? 'fr' : 'en'));
+    set(saved || 'fr');
     document.querySelectorAll('.lang button').forEach(function (b) { b.onclick = function () { set(b.dataset.set); }; });
     // A link from the install steps opens its section.
     function open() { var d = document.querySelector(location.hash); if (d && d.tagName === 'DETAILS') d.open = true; }
