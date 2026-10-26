@@ -92,10 +92,10 @@
   @keyframes fill { 0% { width: 6%; } 70%, 100% { width: 62%; } }
 
   /* Things settle into place as they scroll into view. */
-  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
-  .reveal.in { opacity: 1; transform: none; }
+  .js .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .js .reveal.in { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) {
-    .reveal { opacity: 1; transform: none; transition: none; }
+    .js .reveal { opacity: 1; transform: none; transition: none; }
     .tv *, .dev, .chip, .bar2 i { animation: none !important; }
   }
 
@@ -452,8 +452,9 @@
     })
     .catch(function () {});
 
-  // Reveal on scroll.
+  // Reveal on scroll; without scripting everything simply shows.
   (function () {
+    document.documentElement.classList.add('js');
     var items = document.querySelectorAll('.reveal');
     if (!('IntersectionObserver' in window)) { items.forEach(function (e) { e.classList.add('in'); }); return; }
     var io = new IntersectionObserver(function (entries) {
