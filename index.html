@@ -43,6 +43,62 @@
   .cta a.arrow { color: #2997ff; }
   .arrow::after { content: " ›"; }
 
+
+  /* The app on a TV, drawn in CSS: a hero, a side bar and a row of cards that take focus one after another. */
+  .tv { position: relative; max-width: 940px; margin: 56px auto 0; border-radius: 26px; padding: 10px; background: linear-gradient(180deg, #2a2a2d, #111); box-shadow: 0 60px 120px rgba(10, 132, 255, 0.28), 0 30px 60px rgba(0, 0, 0, 0.6); }
+  .tv .screen { position: relative; aspect-ratio: 16 / 9; border-radius: 18px; overflow: hidden; background: #0b0b10; text-align: left; }
+  .tv .art { position: absolute; inset: -20%; background:
+      radial-gradient(40% 50% at 30% 35%, rgba(10, 132, 255, 0.85), transparent 70%),
+      radial-gradient(35% 45% at 72% 30%, rgba(191, 90, 242, 0.75), transparent 70%),
+      radial-gradient(40% 40% at 60% 85%, rgba(255, 159, 10, 0.55), transparent 70%);
+    animation: drift 14s ease-in-out infinite alternate; filter: blur(8px); }
+  .tv .shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0, 0, 0, 0.72), transparent 65%), linear-gradient(0deg, rgba(0, 0, 0, 0.85), transparent 55%); }
+  .tv .side { position: absolute; left: 2.2%; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 14px; padding: 12px 9px; border-radius: 999px; background: rgba(60, 60, 66, 0.5); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3); }
+  .tv .side i { width: 18px; height: 18px; border-radius: 50%; background: rgba(255, 255, 255, 0.35); }
+  .tv .side i:first-child { background: #fff; }
+  .tv .info { position: absolute; left: 11%; top: 17%; width: 52%; }
+  .tv .info small { display: block; font-size: clamp(8px, 1.2vw, 13px); letter-spacing: 0.02em; color: rgba(255, 255, 255, 0.7); margin-bottom: 8px; }
+  .tv .info strong { display: block; font-size: clamp(18px, 4.4vw, 46px); line-height: 1; letter-spacing: -0.03em; margin-bottom: 12px; animation: title 12s ease-in-out infinite; }
+  .tv .info em { display: block; height: 6px; width: 78%; border-radius: 4px; background: rgba(255, 255, 255, 0.32); margin: 5px 0; }
+  .tv .info em + em { width: 56%; }
+  .tv .info b { display: inline-block; margin-top: 12px; padding: 6px 18px; border-radius: 999px; background: rgba(255, 255, 255, 0.92); color: #000; font-size: clamp(8px, 1.3vw, 14px); font-weight: 600; }
+  .tv .row { position: absolute; left: 11%; right: 3%; bottom: 7%; display: flex; gap: 2%; }
+  .tv .row span { flex: 1; aspect-ratio: 16 / 10; border-radius: 9px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4); animation: focus 12s ease-in-out infinite; }
+  .tv .row span:nth-child(1) { background: linear-gradient(135deg, #ff6a6a, #7a1fa2); animation-delay: 0s; }
+  .tv .row span:nth-child(2) { background: linear-gradient(135deg, #34c8ff, #0a3d91); animation-delay: 2s; }
+  .tv .row span:nth-child(3) { background: linear-gradient(135deg, #ffd60a, #ff375f); animation-delay: 4s; }
+  .tv .row span:nth-child(4) { background: linear-gradient(135deg, #30d158, #0a6b6b); animation-delay: 6s; }
+  .tv .row span:nth-child(5) { background: linear-gradient(135deg, #bf5af2, #1d1d6b); animation-delay: 8s; }
+  .tv .row span:nth-child(6) { background: linear-gradient(135deg, #ff9f0a, #8e1a3a); animation-delay: 10s; }
+  .tv::after { content: ""; position: absolute; left: 20%; right: 20%; bottom: -22px; height: 22px; background: linear-gradient(180deg, #1a1a1c, transparent); border-radius: 0 0 20px 20px; }
+  @keyframes drift { from { transform: translate(-3%, -2%) scale(1); } to { transform: translate(4%, 3%) scale(1.12); } }
+  @keyframes focus { 0%, 100% { transform: none; outline: 0 solid transparent; } 3%, 14% { transform: translateY(-9%) scale(1.14); outline: 3px solid rgba(255, 255, 255, 0.95); box-shadow: 0 14px 30px rgba(0, 0, 0, 0.55); } 17% { transform: none; outline: 0 solid transparent; } }
+  @keyframes title { 0%, 100% { opacity: 1; } 48%, 52% { opacity: 0.55; } }
+
+  /* Three things it does, each with a small moving picture. */
+  .feats { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+  .feat { background: #fff; border-radius: 28px; padding: 28px; text-align: center; }
+  .feat .pic { height: 120px; display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 14px; }
+  .feat h3 { font-size: 24px; line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 6px; }
+  .feat p { margin: 0; color: var(--mute); }
+  .dev { border: 3px solid #d2d2d7; border-radius: 8px; animation: lit 6s ease-in-out infinite; }
+  .dev.tvd { width: 74px; height: 46px; } .dev.lap { width: 62px; height: 40px; animation-delay: 2s; } .dev.pho { width: 26px; height: 50px; border-radius: 7px; animation-delay: 4s; }
+  @keyframes lit { 0%, 100% { border-color: #d2d2d7; box-shadow: none; } 12%, 30% { border-color: var(--blue); box-shadow: 0 0 22px rgba(0, 113, 227, 0.55); } 45% { border-color: #d2d2d7; box-shadow: none; } }
+  .chip { padding: 8px 16px; border-radius: 999px; background: var(--light); font-weight: 600; font-size: 15px; animation: chip 6s ease-in-out infinite; }
+  .chip:nth-child(2) { animation-delay: 2s; } .chip:nth-child(3) { animation-delay: 4s; }
+  @keyframes chip { 0%, 100% { background: var(--light); color: var(--ink); } 12%, 30% { background: var(--blue); color: #fff; transform: scale(1.08); } 45% { background: var(--light); color: var(--ink); transform: none; } }
+  .bar2 { width: 72%; height: 8px; border-radius: 6px; background: #e5e5ea; overflow: hidden; }
+  .bar2 i { display: block; height: 100%; width: 0; background: var(--blue); border-radius: 6px; animation: fill 5s ease-in-out infinite; }
+  @keyframes fill { 0% { width: 6%; } 70%, 100% { width: 62%; } }
+
+  /* Things settle into place as they scroll into view. */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .tv *, .dev, .chip, .bar2 i { animation: none !important; }
+  }
+
   section { padding: 84px 0; }
   h2 { font-size: clamp(30px, 5vw, 48px); line-height: 1.08; letter-spacing: -0.025em; font-weight: 700; margin: 0 0 8px; text-align: center; }
   .sub { text-align: center; color: var(--mute); font-size: clamp(17px, 2.2vw, 21px); margin: 0 0 44px; }
@@ -110,15 +166,53 @@
       <a class="pill" href="#download"><span class="en">Download</span><span class="fr">Télécharger</span></a>
       <a class="arrow" href="#install"><span class="en">How to install</span><span class="fr">Comment installer</span></a>
     </div>
+
+    <div class="tv reveal" aria-hidden="true">
+      <div class="screen">
+        <div class="art"></div><div class="shade"></div>
+        <div class="side"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="info">
+          <small>Movie · 2026 · Adventure</small>
+          <strong>Tonight’s pick</strong>
+          <em></em><em></em>
+          <b>▶ Play</b>
+        </div>
+        <div class="row"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      </div>
+    </div>
   </div>
 </div>
 
+<section id="why">
+  <div class="wrap">
+    <h2 class="reveal"><span class="en">Made to be watched.</span><span class="fr">Faite pour être regardée.</span></h2>
+    <p class="sub reveal"><span class="en">Everything in one place, on the screen you like.</span><span class="fr">Tout au même endroit, sur l’écran que vous préférez.</span></p>
+    <div class="feats">
+      <div class="feat reveal">
+        <div class="pic"><span class="dev tvd"></span><span class="dev lap"></span><span class="dev pho"></span></div>
+        <h3><span class="en">Every screen</span><span class="fr">Tous les écrans</span></h3>
+        <p><span class="en">TV, computer, phone: the same library, the same look.</span><span class="fr">TV, ordinateur, téléphone : la même bibliothèque, le même style.</span></p>
+      </div>
+      <div class="feat reveal">
+        <div class="pic"><span class="chip">FR</span><span class="chip">EN</span><span class="chip">ES</span></div>
+        <h3><span class="en">Your languages</span><span class="fr">Vos langues</span></h3>
+        <p><span class="en">Pick the audio and the subtitles you want, in a tap.</span><span class="fr">Choisissez l’audio et les sous-titres, en un geste.</span></p>
+      </div>
+      <div class="feat reveal">
+        <div class="pic"><div class="bar2"><i></i></div></div>
+        <h3><span class="en">Right where you stopped</span><span class="fr">Là où vous vous étiez arrêté</span></h3>
+        <p><span class="en">Start on the TV, finish on your phone.</span><span class="fr">Commencez sur la TV, terminez sur votre téléphone.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="download">
   <div class="wrap">
-    <h2><span class="en">Choose your device.</span><span class="fr">Choisissez votre appareil.</span></h2>
+    <h2 class="reveal"><span class="en">Choose your device.</span><span class="fr">Choisissez votre appareil.</span></h2>
     <p class="sub"><span class="en">Updates arrive by themselves on computers and phones.</span><span class="fr">Les mises à jour arrivent toutes seules sur ordinateur et téléphone.</span></p>
     <div class="grid">
-  <div class="card">
+  <div class="card reveal">
     <h3>Mac</h3>
     <p><span class="en">Apple Silicon (M1 and newer) or Intel.</span><span class="fr">Apple Silicon (M1 et plus récent) ou Intel.</span></p>
     <div class="actions">
@@ -127,7 +221,7 @@
       <a class="more" href="#mac"><span class="en">How to install</span><span class="fr">Comment installer</span></a>
     </div>
   </div>
-  <div class="card">
+  <div class="card reveal">
     <h3>Windows</h3>
     <p><span class="en">Windows 10 and 11.</span><span class="fr">Windows 10 et 11.</span></p>
     <div class="actions">
@@ -135,7 +229,7 @@
       <a class="more" href="#windows"><span class="en">How to install</span><span class="fr">Comment installer</span></a>
     </div>
   </div>
-  <div class="card">
+  <div class="card reveal">
     <h3>Fire TV Stick</h3>
     <p><span class="en">Amazon Fire TV Stick and Fire TV.</span><span class="fr">Amazon Fire TV Stick et Fire TV.</span></p>
     <div class="actions">
@@ -143,7 +237,7 @@
       <a class="more" href="#firetv"><span class="en">How to install</span><span class="fr">Comment installer</span></a>
     </div>
   </div>
-  <div class="card">
+  <div class="card reveal">
     <h3>Android</h3>
     <p><span class="en">Phones, tablets and Android TV.</span><span class="fr">Téléphones, tablettes et Android TV.</span></p>
     <div class="actions">
@@ -151,7 +245,7 @@
       <a class="more" href="#android"><span class="en">How to install</span><span class="fr">Comment installer</span></a>
     </div>
   </div>
-  <div class="card">
+  <div class="card reveal">
     <h3>LG TV (webOS)</h3>
     <p><span class="en">Needs the TV’s developer mode.</span><span class="fr">Demande le mode développeur de la TV.</span></p>
     <div class="actions">
@@ -159,7 +253,7 @@
       <a class="more" href="#lg"><span class="en">How to install</span><span class="fr">Comment installer</span></a>
     </div>
   </div>
-  <div class="card">
+  <div class="card reveal">
     <h3>Samsung TV (Tizen)</h3>
     <p><span class="en">The most technical one.</span><span class="fr">La plus technique.</span></p>
     <div class="actions">
@@ -167,7 +261,7 @@
       <a class="more" href="#samsung"><span class="en">How to install</span><span class="fr">Comment installer</span></a>
     </div>
   </div>
-  <div class="card">
+  <div class="card reveal">
     <h3>Linux</h3>
     <p>Flatpak, x64 / arm64.</p>
     <div class="actions">
@@ -357,6 +451,16 @@
       });
     })
     .catch(function () {});
+
+  // Reveal on scroll.
+  (function () {
+    var items = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { items.forEach(function (e) { e.classList.add('in'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    items.forEach(function (e, i) { e.style.transitionDelay = (i % 3) * 80 + 'ms'; io.observe(e); });
+  })();
 </script>
 </body>
 </html>
