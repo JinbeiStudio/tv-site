@@ -341,7 +341,7 @@
     set(saved || ((navigator.language || 'en').slice(0, 2) === 'fr' ? 'fr' : 'en'));
     document.querySelectorAll('.lang button').forEach(function (b) { b.onclick = function () { set(b.dataset.set); }; });
     // A link from the install steps opens its section.
-    function open() { var d = document.querySelector(location.hash + '.glass'); if (d && d.tagName === 'DETAILS') d.open = true; }
+    function open() { var d = document.querySelector(location.hash); if (d && d.tagName === 'DETAILS') d.open = true; }
     window.addEventListener('hashchange', open);
     document.querySelectorAll('a[href^="#"]').forEach(function (a) { a.addEventListener('click', function () { var d = document.querySelector(a.getAttribute('href')); if (d && d.tagName === 'DETAILS') d.open = true; }); });
     if (location.hash) try { open(); } catch (e) {}
