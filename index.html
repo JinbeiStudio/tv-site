@@ -128,15 +128,23 @@
   .note { margin-top: 14px; padding: 12px 16px; border-radius: 14px; background: rgba(0, 0, 0, 0.05); color: var(--mute); font-size: 15px; }
   code { padding: 2px 7px; border-radius: 8px; background: rgba(0, 0, 0, 0.06); font-size: 0.9em; word-break: break-all; }
 
-  #use { background: #000; color: #f5f5f7; position: relative; overflow: hidden; }
-  #use::before { content: ""; position: absolute; inset: 0; background: radial-gradient(50% 50% at 15% 10%, rgba(10, 132, 255, 0.28), transparent 70%), radial-gradient(45% 45% at 90% 90%, rgba(48, 209, 88, 0.14), transparent 70%); }
-  #use .wrap { position: relative; }
-  #use .sub { color: rgba(245, 245, 247, 0.62); }
-  .steps { max-width: 760px; margin: 0 auto; padding: 8px 30px 18px; border-radius: 28px; background: rgba(40, 40, 44, 0.6); backdrop-filter: blur(40px) saturate(1.8); -webkit-backdrop-filter: blur(40px) saturate(1.8); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.3); }
-  .steps ol { padding-left: 22px; }
-  .steps li { margin: 16px 0; font-size: 18px; }
-  .steps b { color: #fff; }
-  #use a { color: #2997ff; }
+  /* Getting started: a row of tall cards that scrolls sideways, one idea on each. */
+  .gal { display: flex; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px max(22px, calc((100vw - 1080px) / 2)) 24px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .gal::-webkit-scrollbar { display: none; }
+  .gc { flex: 0 0 min(80vw, 340px); height: 420px; scroll-snap-align: center; border-radius: 28px; padding: 30px 28px; background: #fff; display: flex; flex-direction: column; }
+  .gc.dark { background: #1d1d1f; color: #f5f5f7; }
+  .gc.blue { background: linear-gradient(160deg, #0a84ff, #5e5ce6); color: #fff; }
+  .gc small { font-size: 14px; font-weight: 600; color: var(--mute); letter-spacing: 0; }
+  .gc.dark small { color: rgba(245, 245, 247, 0.6); }
+  .gc.blue small { color: rgba(255, 255, 255, 0.75); }
+  .gc h3 { font-size: 30px; line-height: 1.1; letter-spacing: -0.025em; margin: 8px 0 12px; }
+  .gc p { margin: 0; font-size: 17px; color: var(--mute); }
+  .gc.dark p { color: rgba(245, 245, 247, 0.72); }
+  .gc.blue p { color: rgba(255, 255, 255, 0.85); }
+  .gc .n { margin-top: auto; font-size: 120px; line-height: 0.8; font-weight: 700; letter-spacing: -0.05em; opacity: 0.12; }
+  .gal-nav { display: flex; justify-content: flex-end; gap: 10px; max-width: 1080px; margin: 0 auto; padding: 0 22px; }
+  .gal-nav button { width: 40px; height: 40px; border-radius: 50%; border: 0; background: rgba(0, 0, 0, 0.08); color: var(--ink); font-size: 20px; cursor: pointer; }
+  .gal-nav button:hover { background: rgba(0, 0, 0, 0.14); }
   footer { padding: 36px 0 52px; text-align: center; color: var(--mute); font-size: 14px; }
 </style>
 </head>
@@ -394,27 +402,48 @@
 
 <section id="use">
   <div class="wrap">
-    <h2><span class="en">Then, just watch.</span><span class="fr">Ensuite, regardez.</span></h2>
-    <p class="sub"><span class="en">How to use it.</span><span class="fr">Comment l’utiliser.</span></p>
-    <div class="steps">
-  <ol class="en">
-    <li>Open the app. On the first screen, <b>Add your profile</b>: type the profile address Julien gave you, then <b>Connect</b>.</li>
-    <li>Choose your name and sign in with the PIN or password you were given.</li>
-    <li>Browse the home screen: the rows follow what’s popular and what you were watching. <b>Continue Watching</b> brings you back where you stopped.</li>
-    <li>Choose a film or series. Press <b>Play</b> to start; for a series, pick the season and episode.</li>
-    <li>In the player, use the menus for <b>subtitles</b> and <b>audio language</b>. Press <b>Back</b> to leave.</li>
-    <li>With a TV remote: arrows move, <b>OK</b> chooses, <b>Back</b> goes back. With a mouse or phone: click or tap.</li>
-  </ol>
-  <ol class="fr">
-    <li>Ouvrez l’app. Sur le premier écran, <b>Ajouter votre profil</b> : saisissez l’adresse de profil donnée par Julien, puis <b>Se connecter</b>.</li>
-    <li>Choisissez votre nom et connectez-vous avec le code PIN ou le mot de passe qu’on vous a donné.</li>
-    <li>Parcourez l’accueil : les rangées suivent ce qui est populaire et ce que vous regardiez. <b>Reprendre la lecture</b> vous ramène là où vous vous étiez arrêté.</li>
-    <li>Choisissez un film ou une série. Appuyez sur <b>Lecture</b> ; pour une série, choisissez la saison et l’épisode.</li>
-    <li>Dans le lecteur, utilisez les menus <b>sous-titres</b> et <b>langue audio</b>. Appuyez sur <b>Retour</b> pour quitter.</li>
-    <li>Avec une télécommande de TV : les flèches déplacent, <b>OK</b> choisit, <b>Retour</b> revient. Avec une souris ou un téléphone : cliquez ou touchez.</li>
-  </ol>
-</div>
+    <h2 class="reveal"><span class="en">Getting started.</span><span class="fr">Premiers pas.</span></h2>
+    <p class="sub reveal"><span class="en">Six steps, then it’s yours.</span><span class="fr">Six étapes, et c’est à vous.</span></p>
   </div>
+  <div class="gal reveal" id="gal">
+      <div class="gc blue">
+        <small><span class="en">Step 1</span><span class="fr">Étape 1</span></small>
+        <h3><span class="en">Add your profile.</span><span class="fr">Ajoutez votre profil.</span></h3>
+        <p><span class="en">Open the app and type the profile address Julien gave you, then Connect.</span><span class="fr">Ouvrez l’app et saisissez l’adresse de profil donnée par Julien, puis Se connecter.</span></p>
+        <div class="n">1</div>
+      </div>
+      <div class="gc ">
+        <small><span class="en">Step 2</span><span class="fr">Étape 2</span></small>
+        <h3><span class="en">Sign in.</span><span class="fr">Connectez-vous.</span></h3>
+        <p><span class="en">Choose your name and enter the PIN or password you were given.</span><span class="fr">Choisissez votre nom et saisissez le code PIN ou le mot de passe reçu.</span></p>
+        <div class="n">2</div>
+      </div>
+      <div class="gc dark">
+        <small><span class="en">Step 3</span><span class="fr">Étape 3</span></small>
+        <h3><span class="en">Find something to watch.</span><span class="fr">Trouvez quoi regarder.</span></h3>
+        <p><span class="en">The rows follow what’s popular. Continue Watching brings you back where you stopped.</span><span class="fr">Les rangées suivent ce qui est populaire. Reprendre la lecture vous ramène là où vous étiez.</span></p>
+        <div class="n">3</div>
+      </div>
+      <div class="gc ">
+        <small><span class="en">Step 4</span><span class="fr">Étape 4</span></small>
+        <h3><span class="en">Press Play.</span><span class="fr">Appuyez sur Lecture.</span></h3>
+        <p><span class="en">Choose a film or a series. For a series, pick the season and the episode first.</span><span class="fr">Choisissez un film ou une série. Pour une série, choisissez d’abord la saison et l’épisode.</span></p>
+        <div class="n">4</div>
+      </div>
+      <div class="gc dark">
+        <small><span class="en">Step 5</span><span class="fr">Étape 5</span></small>
+        <h3><span class="en">Your languages.</span><span class="fr">Vos langues.</span></h3>
+        <p><span class="en">In the player, the menus change the subtitles and the audio language. Back leaves the player.</span><span class="fr">Dans le lecteur, les menus changent les sous-titres et la langue audio. Retour quitte le lecteur.</span></p>
+        <div class="n">5</div>
+      </div>
+      <div class="gc ">
+        <small><span class="en">Step 6</span><span class="fr">Étape 6</span></small>
+        <h3><span class="en">Remote or touch.</span><span class="fr">Télécommande ou toucher.</span></h3>
+        <p><span class="en">TV remote: arrows move, OK chooses, Back goes back. Mouse or phone: click or tap.</span><span class="fr">Télécommande de TV : les flèches déplacent, OK choisit, Retour revient. Souris ou téléphone : cliquez ou touchez.</span></p>
+        <div class="n">6</div>
+      </div>
+  </div>
+  <div class="gal-nav"><button type="button" id="prev" aria-label="Previous">‹</button><button type="button" id="next" aria-label="Next">›</button></div>
 </section>
 
 <footer>
@@ -461,6 +490,14 @@
       entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { threshold: 0.15 });
     items.forEach(function (e, i) { e.style.transitionDelay = (i % 3) * 80 + 'ms'; io.observe(e); });
+  })();
+
+  // The steps row: the arrows move it one card.
+  (function () {
+    var g = document.getElementById('gal');
+    function by(d) { g.scrollBy({ left: d * (g.querySelector('.gc').offsetWidth + 18), behavior: 'smooth' }); }
+    document.getElementById('prev').onclick = function () { by(-1); };
+    document.getElementById('next').onclick = function () { by(1); };
   })();
 </script>
 </body>
