@@ -195,7 +195,9 @@
   .gal-nav { display: flex; justify-content: flex-end; gap: 10px; max-width: 1080px; margin: 0 auto; padding: 0 22px; }
   .gal-nav button { width: 40px; height: 40px; border-radius: 50%; border: 0; background: rgba(0, 0, 0, 0.08); color: var(--ink); font-size: 20px; cursor: pointer; }
   .gal-nav button:hover { background: rgba(0, 0, 0, 0.14); }
-  footer { padding: 36px 0 52px; text-align: center; color: var(--mute); font-size: 14px; }
+  .credit { margin: 10px auto 0; max-width: 640px; font-size: 13px; }
+  .credit a { color: inherit; text-decoration: underline; }
+  footer { padding: 36px 22px 52px; text-align: center; color: var(--mute); font-size: 14px; }
 </style>
 </head>
 <body>
@@ -574,7 +576,11 @@
 </section>
 
 <footer>
-  <span class="en">Need help? Ask Julien.</span><span class="fr">Besoin d’aide ? Demandez à Julien.</span>
+  <div><span class="en">Need help? Ask Julien.</span><span class="fr">Besoin d’aide ? Demandez à Julien.</span></div>
+  <div class="credit">
+    <span class="en">Jinbei Studio is built on <a href="https://github.com/Viren070/AIOStreams" target="_blank" rel="noopener">AIOStreams</a>, an open-source project by Viren070 (AGPL-3.0). <a href="https://github.com/JinbeiStudio/AIOStreams" target="_blank" rel="noopener">Our version’s source</a>.</span>
+    <span class="fr">Jinbei Studio repose sur <a href="https://github.com/Viren070/AIOStreams" target="_blank" rel="noopener">AIOStreams</a>, un projet open source de Viren070 (AGPL-3.0). <a href="https://github.com/JinbeiStudio/AIOStreams" target="_blank" rel="noopener">Le code de notre version</a>.</span>
+  </div>
 </footer>
 
 <script>
