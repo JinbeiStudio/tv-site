@@ -64,7 +64,7 @@
   .tv .dots { position: absolute; left: 6%; bottom: 9%; display: flex; gap: 6px; }
   .tv .dots i { width: 6px; height: 6px; border-radius: 50%; background: rgba(255, 255, 255, 0.4); }
   .tv .dots i:first-child { background: #fff; }
-  .tv h4 { margin: 0 0 10px 6%; font-size: clamp(11px, 1.9cqw, 20px); font-weight: 600; letter-spacing: -0.01em; color: rgba(255, 255, 255, 0.92); }
+  .tv h4 { position: relative; z-index: 2; margin: 0 0 1.8cqw 6%; font-size: clamp(11px, 1.9cqw, 20px); font-weight: 600; letter-spacing: -0.01em; color: rgba(255, 255, 255, 0.92); }
   .tv .rowl { display: flex; gap: 1.6%; padding: 0 0 0 6%; margin-bottom: 5%; }
   .tv .rowl .c { flex: 0 0 29%; aspect-ratio: 16 / 9; border-radius: 12px; position: relative; overflow: hidden; animation: focus 12s ease-in-out infinite; }
   .tv .rowl .c::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0, 0, 0, 0.75), transparent 60%); }
@@ -90,7 +90,7 @@
   @keyframes scrollpage { 0%, 14% { transform: translateY(0); } 58%, 100% { transform: translateY(-72cqh); } }
   .tv::after { content: ""; position: absolute; left: 20%; right: 20%; bottom: -22px; height: 22px; background: linear-gradient(180deg, #1a1a1c, transparent); border-radius: 0 0 20px 20px; }
   @keyframes drift { from { transform: translate(-3%, -2%) scale(1); } to { transform: translate(4%, 3%) scale(1.12); } }
-  @keyframes focus { 0%, 100% { transform: none; outline: 0 solid transparent; } 3%, 14% { transform: translateY(-9%) scale(1.14); outline: 3px solid rgba(255, 255, 255, 0.95); box-shadow: 0 14px 30px rgba(0, 0, 0, 0.55); } 17% { transform: none; outline: 0 solid transparent; } }
+  @keyframes focus { 0%, 100% { transform: none; outline: 0 solid transparent; } 3%, 14% { transform: translateY(-3%) scale(1.07); outline: 3px solid rgba(255, 255, 255, 0.95); box-shadow: 0 14px 30px rgba(0, 0, 0, 0.55); } 17% { transform: none; outline: 0 solid transparent; } }
   @keyframes title { 0%, 100% { opacity: 1; } 48%, 52% { opacity: 0.55; } }
 
   /* Three things it does, each with a small moving picture. */
