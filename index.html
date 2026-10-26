@@ -7,160 +7,184 @@
 <meta name="description" content="Download Jinbei Studio for your TV, computer or phone, and how to install it.">
 <link rel="icon" href="logo.png">
 <style>
-  :root {
-    --bg: #141416;
-    --text: #fff;
-    --dim: rgba(255, 255, 255, 0.62);
-    --glass: rgba(36, 36, 40, 0.62);
-    --accent: #0a84ff;
-  }
+  :root { --light: #f5f5f7; --ink: #1d1d1f; --mute: #6e6e73; --blue: #0071e3; --link: #0066cc; }
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    min-height: 100vh;
-    font: 17px/1.5 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", Roboto, sans-serif;
-    color: var(--text);
-    background:
-      radial-gradient(circle at 15% 8%, rgba(10, 132, 255, 0.38), transparent 40%),
-      radial-gradient(circle at 85% 30%, rgba(191, 90, 242, 0.3), transparent 42%),
-      radial-gradient(circle at 40% 90%, rgba(48, 209, 88, 0.14), transparent 40%),
-      var(--bg);
-    background-attachment: fixed;
-  }
+  html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+  body { margin: 0; font: 17px/1.47 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--light); letter-spacing: -0.01em; }
   [data-lang="en"] .fr, [data-lang="fr"] .en { display: none !important; }
-  main { max-width: 1040px; margin: 0 auto; padding: 0 20px 80px; }
-  header { display: flex; align-items: center; justify-content: space-between; padding: 22px 0; }
-  .brand { display: flex; align-items: center; gap: 12px; font-weight: 600; }
-  .brand img { width: 44px; height: 44px; object-fit: contain; }
-  .lang { display: flex; gap: 6px; }
-  .lang button {
-    font: inherit; font-size: 14px; color: var(--text); cursor: pointer;
-    padding: 6px 14px; border-radius: 999px; border: 0; background: rgba(255, 255, 255, 0.1);
-  }
-  .lang button[aria-pressed="true"] { background: #fff; color: #000; }
-  h1 { font-size: clamp(34px, 6vw, 60px); line-height: 1.05; letter-spacing: -0.02em; margin: 40px 0 12px; text-align: center; }
-  .lead { text-align: center; color: var(--dim); font-size: clamp(17px, 2.2vw, 21px); max-width: 640px; margin: 0 auto 40px; }
-  h2 { font-size: clamp(24px, 3.6vw, 34px); letter-spacing: -0.01em; margin: 64px 0 18px; }
-  .glass {
-    background: var(--glass);
-    backdrop-filter: blur(40px) saturate(1.8);
-    -webkit-backdrop-filter: blur(40px) saturate(1.8);
-    border-radius: 24px;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 20px 40px rgba(0, 0, 0, 0.4);
-  }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 16px; }
-  .card { padding: 22px; display: flex; flex-direction: column; gap: 8px; }
-  .card h3 { margin: 0; font-size: 21px; }
-  .card p { margin: 0; color: var(--dim); font-size: 15px; }
-  .actions { margin-top: auto; padding-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
-  .btn {
-    display: inline-block; padding: 11px 20px; border-radius: 999px; font-size: 15px; font-weight: 600;
-    text-decoration: none; color: #000; background: rgba(255, 255, 255, 0.95);
-  }
-  .btn.alt { color: #fff; background: rgba(255, 255, 255, 0.14); }
-  .btn:hover, .btn:focus-visible { outline: 3px solid rgba(255, 255, 255, 0.5); outline-offset: 2px; }
-  details { margin: 0 0 12px; padding: 4px 22px; }
-  summary { cursor: pointer; padding: 16px 0; font-size: 20px; font-weight: 600; list-style: none; display: flex; justify-content: space-between; }
-  summary::-webkit-details-marker { display: none; }
-  summary::after { content: "+"; color: var(--dim); font-weight: 400; }
-  details[open] summary::after { content: "–"; }
-  details .body { padding: 0 0 18px; color: rgba(255, 255, 255, 0.86); }
-  details ol { margin: 8px 0 0; padding-left: 22px; }
-  details li { margin: 8px 0; }
-  .note { margin-top: 12px; padding: 12px 14px; border-radius: 14px; background: rgba(255, 255, 255, 0.07); color: var(--dim); font-size: 15px; }
-  code { padding: 2px 7px; border-radius: 8px; background: rgba(255, 255, 255, 0.12); font-size: 0.92em; word-break: break-all; }
-  .steps { padding: 4px 22px 22px; }
+  a { color: var(--link); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 22px; }
+
+  /* The bar: translucent, with the product's name and one blue button, as Apple's product pages. */
+  .bar { position: sticky; top: 0; z-index: 10; height: 52px; background: rgba(22, 22, 23, 0.8); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); color: #f5f5f7; }
+  .bar .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+  .bar .name { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 600; color: #f5f5f7; }
+  .bar .name img { width: 26px; height: 26px; object-fit: contain; }
+  .bar nav { display: flex; align-items: center; gap: 22px; font-size: 13px; }
+  .bar nav a { color: rgba(245, 245, 247, 0.8); }
+  .bar nav a:hover { color: #fff; text-decoration: none; }
+  .lang { display: flex; gap: 2px; }
+  .lang button { font: inherit; font-size: 12px; color: rgba(245, 245, 247, 0.75); cursor: pointer; padding: 3px 9px; border-radius: 999px; border: 0; background: transparent; }
+  .lang button[aria-pressed="true"] { background: rgba(255, 255, 255, 0.18); color: #fff; }
+  .pill { display: inline-block; padding: 5px 13px; border-radius: 999px; font-size: 13px; background: var(--blue); color: #fff !important; }
+  .pill:hover { background: #0077ed; text-decoration: none !important; }
+  @media (max-width: 760px) { .bar nav a.hide { display: none; } }
+
+  /* The hero: black, one large mark, a headline that fills the screen. */
+  .hero { background: #000; color: #f5f5f7; text-align: center; padding: 88px 0 96px; position: relative; overflow: hidden; }
+  .hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 55% at 50% 0%, rgba(10, 132, 255, 0.35), transparent 70%), radial-gradient(40% 40% at 85% 85%, rgba(191, 90, 242, 0.22), transparent 70%); }
+  .hero .wrap { position: relative; }
+  .hero img { width: 112px; height: 112px; object-fit: contain; margin-bottom: 18px; }
+  .hero h1 { font-size: clamp(40px, 8vw, 88px); line-height: 1.04; letter-spacing: -0.03em; font-weight: 700; margin: 0 auto 18px; max-width: 900px; }
+  .hero p { font-size: clamp(19px, 2.6vw, 28px); line-height: 1.25; color: rgba(245, 245, 247, 0.72); max-width: 680px; margin: 0 auto 30px; }
+  .cta { display: flex; justify-content: center; align-items: center; gap: 26px; flex-wrap: wrap; font-size: 19px; }
+  .cta .pill { font-size: 17px; padding: 11px 24px; }
+  .cta a.arrow { color: #2997ff; }
+  .arrow::after { content: " ›"; }
+
+  section { padding: 84px 0; }
+  h2 { font-size: clamp(30px, 5vw, 48px); line-height: 1.08; letter-spacing: -0.025em; font-weight: 700; margin: 0 0 8px; text-align: center; }
+  .sub { text-align: center; color: var(--mute); font-size: clamp(17px, 2.2vw, 21px); margin: 0 0 44px; }
+
+  /* Tiles: big white rounded cards, a name, a line, a blue button and a quiet link. */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; }
+  .card { background: #fff; border-radius: 28px; padding: 30px 28px 26px; display: flex; flex-direction: column; min-height: 230px; }
+  .card h3 { margin: 0 0 4px; font-size: 28px; line-height: 1.1; letter-spacing: -0.02em; }
+  .card p { margin: 0; color: var(--mute); font-size: 17px; }
+  .actions { margin-top: auto; padding-top: 22px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; }
+  .btn { display: inline-block; padding: 9px 20px; border-radius: 999px; font-size: 15px; font-weight: 500; color: #fff; background: var(--blue); }
+  .btn:hover { background: #0077ed; text-decoration: none; }
+  .btn.ghost { background: rgba(0, 113, 227, 0.1); color: var(--blue); }
+  .btn.ghost:hover { background: rgba(0, 113, 227, 0.18); }
+  .more { font-size: 15px; }
+  .more::after { content: " ›"; }
+
+  #install { background: #fff; }
+  .acc { border-radius: 24px; background: var(--light); margin: 0 0 12px; padding: 4px 26px; }
+  .acc summary { cursor: pointer; padding: 18px 0; font-size: 21px; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  .acc summary::-webkit-details-marker { display: none; }
+  .acc summary::after { content: "+"; color: var(--mute); font-size: 26px; font-weight: 300; }
+  .acc[open] summary::after { content: "–"; }
+  .acc .body { padding: 0 0 20px; }
+  .acc ol { margin: 4px 0 0; padding-left: 22px; }
+  .acc li { margin: 10px 0; }
+  .note { margin-top: 14px; padding: 12px 16px; border-radius: 14px; background: rgba(0, 0, 0, 0.05); color: var(--mute); font-size: 15px; }
+  code { padding: 2px 7px; border-radius: 8px; background: rgba(0, 0, 0, 0.06); font-size: 0.9em; word-break: break-all; }
+
+  #use { background: #000; color: #f5f5f7; position: relative; overflow: hidden; }
+  #use::before { content: ""; position: absolute; inset: 0; background: radial-gradient(50% 50% at 15% 10%, rgba(10, 132, 255, 0.28), transparent 70%), radial-gradient(45% 45% at 90% 90%, rgba(48, 209, 88, 0.14), transparent 70%); }
+  #use .wrap { position: relative; }
+  #use .sub { color: rgba(245, 245, 247, 0.62); }
+  .steps { max-width: 760px; margin: 0 auto; padding: 8px 30px 18px; border-radius: 28px; background: rgba(40, 40, 44, 0.6); backdrop-filter: blur(40px) saturate(1.8); -webkit-backdrop-filter: blur(40px) saturate(1.8); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.3); }
   .steps ol { padding-left: 22px; }
-  .steps li { margin: 10px 0; }
-  a { color: #64b5ff; }
-  footer { margin-top: 64px; text-align: center; color: var(--dim); font-size: 14px; }
+  .steps li { margin: 16px 0; font-size: 18px; }
+  .steps b { color: #fff; }
+  #use a { color: #2997ff; }
+  footer { padding: 36px 0 52px; text-align: center; color: var(--mute); font-size: 14px; }
 </style>
 </head>
 <body>
-<main>
-<header>
-  <div class="brand"><img src="logo.png" alt=""><span>Jinbei Studio</span></div>
-  <div class="lang" role="group" aria-label="Language">
-    <button type="button" data-set="en" aria-pressed="true">EN</button>
-    <button type="button" data-set="fr" aria-pressed="false">FR</button>
+<div class="bar">
+  <div class="wrap">
+    <div class="name"><img src="logo.png" alt=""><span>Jinbei Studio TV</span></div>
+    <nav>
+      <a class="hide" href="#download"><span class="en">Download</span><span class="fr">Télécharger</span></a>
+      <a class="hide" href="#install"><span class="en">Install</span><span class="fr">Installer</span></a>
+      <a class="hide" href="#use"><span class="en">Use</span><span class="fr">Utiliser</span></a>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-set="en" aria-pressed="true">EN</button>
+        <button type="button" data-set="fr" aria-pressed="false">FR</button>
+      </div>
+      <a class="pill" href="#download"><span class="en">Get the app</span><span class="fr">Obtenir</span></a>
+    </nav>
   </div>
-</header>
+</div>
 
-<h1>
-  <span class="en">Your films and series, on every screen.</span>
-  <span class="fr">Vos films et séries, sur tous vos écrans.</span>
-</h1>
-<p class="lead">
-  <span class="en">Pick your device, download the app, and follow the steps below. Updates come by themselves on computers and phones.</span>
-  <span class="fr">Choisissez votre appareil, téléchargez l’application et suivez les étapes ci-dessous. Les mises à jour se font toutes seules sur ordinateur et téléphone.</span>
-</p>
-
-<h2 id="download"><span class="en">Download</span><span class="fr">Télécharger</span></h2>
-<div class="grid">
-  <div class="card glass">
-    <h3>Mac</h3>
-    <p><span class="en">Apple Silicon (M1 and newer) or Intel.</span><span class="fr">Apple Silicon (M1 et plus récent) ou Intel.</span></p>
-    <div class="actions">
-      <a class="btn" data-asset="osx-arm64\.zip$" href="https://github.com/JinbeiStudio/AIOStreams/releases/latest">Apple Silicon</a>
-      <a class="btn alt" data-asset="osx-x64\.zip$" href="https://github.com/JinbeiStudio/AIOStreams/releases/latest">Intel</a>
-      <a class="btn alt" href="#mac"><span class="en">How to install</span><span class="fr">Comment installer</span></a>
-    </div>
-  </div>
-  <div class="card glass">
-    <h3>Windows</h3>
-    <p><span class="en">Windows 10 and 11.</span><span class="fr">Windows 10 et 11.</span></p>
-    <div class="actions">
-      <a class="btn" data-asset="win-x64\.exe$" href="https://github.com/JinbeiStudio/AIOStreams/releases/latest"><span class="en">Download</span><span class="fr">Télécharger</span></a>
-      <a class="btn alt" href="#windows"><span class="en">How to install</span><span class="fr">Comment installer</span></a>
-    </div>
-  </div>
-  <div class="card glass">
-    <h3>Fire TV Stick</h3>
-    <p><span class="en">Amazon Fire TV Stick and Fire TV.</span><span class="fr">Amazon Fire TV Stick et Fire TV.</span></p>
-    <div class="actions">
-      <a class="btn" data-asset="android-armeabi-v7a\.apk$" href="https://github.com/JinbeiStudio/AIOStreams/releases/latest">APK</a>
-      <a class="btn alt" href="#firetv"><span class="en">How to install</span><span class="fr">Comment installer</span></a>
-    </div>
-  </div>
-  <div class="card glass">
-    <h3>Android</h3>
-    <p><span class="en">Phones, tablets and Android TV.</span><span class="fr">Téléphones, tablettes et Android TV.</span></p>
-    <div class="actions">
-      <a class="btn" data-asset="android-arm64-v8a\.apk$" href="https://github.com/JinbeiStudio/AIOStreams/releases/latest">APK</a>
-      <a class="btn alt" href="#android"><span class="en">How to install</span><span class="fr">Comment installer</span></a>
-    </div>
-  </div>
-  <div class="card glass">
-    <h3>LG TV (webOS)</h3>
-    <p><span class="en">Needs the TV’s developer mode.</span><span class="fr">Demande le mode développeur de la TV.</span></p>
-    <div class="actions">
-      <a class="btn" data-asset="webos.*\.ipk$" href="https://github.com/JinbeiStudio/AIOStreams/releases/latest">IPK</a>
-      <a class="btn alt" href="#lg"><span class="en">How to install</span><span class="fr">Comment installer</span></a>
-    </div>
-  </div>
-  <div class="card glass">
-    <h3>Samsung TV (Tizen)</h3>
-    <p><span class="en">The most technical one.</span><span class="fr">La plus technique.</span></p>
-    <div class="actions">
-      <a class="btn" data-asset="tizen.*\.wgt$" href="https://github.com/JinbeiStudio/AIOStreams/releases/latest">WGT</a>
-      <a class="btn alt" href="#samsung"><span class="en">How to install</span><span class="fr">Comment installer</span></a>
-    </div>
-  </div>
-  <div class="card glass">
-    <h3>Linux</h3>
-    <p>Flatpak, x64 / arm64.</p>
-    <div class="actions">
-      <a class="btn" data-asset="linux-x64\.flatpak$" href="https://github.com/JinbeiStudio/AIOStreams/releases/latest">x64</a>
-      <a class="btn alt" data-asset="linux-arm64\.flatpak$" href="https://github.com/JinbeiStudio/AIOStreams/releases/latest">arm64</a>
-      <a class="btn alt" href="#linux"><span class="en">How to install</span><span class="fr">Comment installer</span></a>
+<div class="hero">
+  <div class="wrap">
+    <img src="logo.png" alt="Jinbei Studio">
+    <h1><span class="en">Your films and series. Every screen.</span><span class="fr">Vos films et séries. Sur tous vos écrans.</span></h1>
+    <p><span class="en">The Jinbei Studio app, made like the Apple TV app, for your TV, computer and phone.</span><span class="fr">L’application Jinbei Studio, pensée comme l’app Apple TV, pour votre TV, votre ordinateur et votre téléphone.</span></p>
+    <div class="cta">
+      <a class="pill" href="#download"><span class="en">Download</span><span class="fr">Télécharger</span></a>
+      <a class="arrow" href="#install"><span class="en">How to install</span><span class="fr">Comment installer</span></a>
     </div>
   </div>
 </div>
 
-<h2 id="install"><span class="en">How to install</span><span class="fr">Comment l’installer</span></h2>
+<section id="download">
+  <div class="wrap">
+    <h2><span class="en">Choose your device.</span><span class="fr">Choisissez votre appareil.</span></h2>
+    <p class="sub"><span class="en">Updates arrive by themselves on computers and phones.</span><span class="fr">Les mises à jour arrivent toutes seules sur ordinateur et téléphone.</span></p>
+    <div class="grid">
+  <div class="card">
+    <h3>Mac</h3>
+    <p><span class="en">Apple Silicon (M1 and newer) or Intel.</span><span class="fr">Apple Silicon (M1 et plus récent) ou Intel.</span></p>
+    <div class="actions">
+      <a class="btn" data-asset="osx-arm64\.zip$" href="https://github.com/JinbeiStudio/AIOStreams/releases/latest">Apple Silicon</a>
+      <a class="btn ghost" data-asset="osx-x64\.zip$" href="https://github.com/JinbeiStudio/AIOStreams/releases/latest">Intel</a>
+      <a class="more" href="#mac"><span class="en">How to install</span><span class="fr">Comment installer</span></a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Windows</h3>
+    <p><span class="en">Windows 10 and 11.</span><span class="fr">Windows 10 et 11.</span></p>
+    <div class="actions">
+      <a class="btn" data-asset="win-x64\.exe$" href="https://github.com/JinbeiStudio/AIOStreams/releases/latest"><span class="en">Download</span><span class="fr">Télécharger</span></a>
+      <a class="more" href="#windows"><span class="en">How to install</span><span class="fr">Comment installer</span></a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Fire TV Stick</h3>
+    <p><span class="en">Amazon Fire TV Stick and Fire TV.</span><span class="fr">Amazon Fire TV Stick et Fire TV.</span></p>
+    <div class="actions">
+      <a class="btn" data-asset="android-armeabi-v7a\.apk$" href="https://github.com/JinbeiStudio/AIOStreams/releases/latest">APK</a>
+      <a class="more" href="#firetv"><span class="en">How to install</span><span class="fr">Comment installer</span></a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Android</h3>
+    <p><span class="en">Phones, tablets and Android TV.</span><span class="fr">Téléphones, tablettes et Android TV.</span></p>
+    <div class="actions">
+      <a class="btn" data-asset="android-arm64-v8a\.apk$" href="https://github.com/JinbeiStudio/AIOStreams/releases/latest">APK</a>
+      <a class="more" href="#android"><span class="en">How to install</span><span class="fr">Comment installer</span></a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>LG TV (webOS)</h3>
+    <p><span class="en">Needs the TV’s developer mode.</span><span class="fr">Demande le mode développeur de la TV.</span></p>
+    <div class="actions">
+      <a class="btn" data-asset="webos.*\.ipk$" href="https://github.com/JinbeiStudio/AIOStreams/releases/latest">IPK</a>
+      <a class="more" href="#lg"><span class="en">How to install</span><span class="fr">Comment installer</span></a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Samsung TV (Tizen)</h3>
+    <p><span class="en">The most technical one.</span><span class="fr">La plus technique.</span></p>
+    <div class="actions">
+      <a class="btn" data-asset="tizen.*\.wgt$" href="https://github.com/JinbeiStudio/AIOStreams/releases/latest">WGT</a>
+      <a class="more" href="#samsung"><span class="en">How to install</span><span class="fr">Comment installer</span></a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Linux</h3>
+    <p>Flatpak, x64 / arm64.</p>
+    <div class="actions">
+      <a class="btn" data-asset="linux-x64\.flatpak$" href="https://github.com/JinbeiStudio/AIOStreams/releases/latest">x64</a>
+      <a class="btn ghost" data-asset="linux-arm64\.flatpak$" href="https://github.com/JinbeiStudio/AIOStreams/releases/latest">arm64</a>
+      <a class="more" href="#linux"><span class="en">How to install</span><span class="fr">Comment installer</span></a>
+    </div>
+  </div>
+</div>
+  </div>
+</section>
 
-<details class="glass" id="mac">
+<section id="install">
+  <div class="wrap">
+    <h2><span class="en">Install it in a few steps.</span><span class="fr">Installez-la en quelques étapes.</span></h2>
+    <p class="sub"><span class="en">Open your device below.</span><span class="fr">Ouvrez votre appareil ci-dessous.</span></p>
+    <details class="acc" id="mac">
   <summary>Mac</summary>
   <div class="body"><ol class="en">
     <li>Download the file for your Mac: <b>Apple Silicon</b> if it has an M chip, otherwise <b>Intel</b>. (Apple menu → About This Mac tells you.)</li>
@@ -175,7 +199,7 @@
   </ol></div>
 </details>
 
-<details class="glass" id="windows">
+<details class="acc" id="windows">
   <summary>Windows</summary>
   <div class="body"><ol class="en">
     <li>Download the installer and open it.</li>
@@ -188,7 +212,7 @@
   </ol></div>
 </details>
 
-<details class="glass" id="firetv">
+<details class="acc" id="firetv">
   <summary>Fire TV Stick</summary>
   <div class="body"><ol class="en">
     <li>On the Fire TV, install the free <b>Downloader</b> app (search for it in the Appstore).</li>
@@ -206,7 +230,7 @@
   <div class="note fr">Vous ne savez pas quelle Fire TV vous avez ? Prenez le fichier <code>armeabi-v7a</code> : il fonctionne sur toutes les Fire TV Stick.</div></div>
 </details>
 
-<details class="glass" id="android">
+<details class="acc" id="android">
   <summary>Android (phone, tablet, Android TV)</summary>
   <div class="body"><ol class="en">
     <li>Download the <code>arm64-v8a.apk</code> file (it suits almost every phone and tablet made in the last years).</li>
@@ -221,7 +245,7 @@
   </ol></div>
 </details>
 
-<details class="glass" id="lg">
+<details class="acc" id="lg">
   <summary>LG TV (webOS)</summary>
   <div class="body"><ol class="en">
     <li>On the TV, open the LG Content Store, install <b>Developer Mode</b>, and sign in with a free LG developer account (<a href="https://webostv.developer.lge.com/" target="_blank" rel="noopener">webostv.developer.lge.com</a>).</li>
@@ -241,7 +265,7 @@
   <div class="note fr">La session développeur expire au bout d’un moment : ouvrez l’app Developer Mode sur la TV et prolongez-la quand elle le demande. Les apps installées restent.</div></div>
 </details>
 
-<details class="glass" id="samsung">
+<details class="acc" id="samsung">
   <summary>Samsung TV (Tizen)</summary>
   <div class="body"><ol class="en">
     <li>On the TV: Apps → press <b>1 2 3 4 5</b> → turn on <b>Developer mode</b> and enter your computer’s IP address. Restart the TV.</li>
@@ -259,7 +283,7 @@
   <div class="note fr">C’est la méthode la plus longue. Demandez de l’aide à Julien si vous bloquez.</div></div>
 </details>
 
-<details class="glass" id="linux">
+<details class="acc" id="linux">
   <summary>Linux</summary>
   <div class="body"><ol class="en">
     <li>Download the <code>.flatpak</code> file for your processor.</li>
@@ -271,9 +295,14 @@
     <li>Lancez-la depuis le menu des applications.</li>
   </ol></div>
 </details>
+  </div>
+</section>
 
-<h2 id="use"><span class="en">How to use it</span><span class="fr">Comment l’utiliser</span></h2>
-<div class="steps glass">
+<section id="use">
+  <div class="wrap">
+    <h2><span class="en">Then, just watch.</span><span class="fr">Ensuite, regardez.</span></h2>
+    <p class="sub"><span class="en">How to use it.</span><span class="fr">Comment l’utiliser.</span></p>
+    <div class="steps">
   <ol class="en">
     <li>Open the app. On the first screen, <b>Add your profile</b>: type the profile address Julien gave you, then <b>Connect</b>.</li>
     <li>Choose your name and sign in with the PIN or password you were given.</li>
@@ -291,11 +320,12 @@
     <li>Avec une télécommande de TV : les flèches déplacent, <b>OK</b> choisit, <b>Retour</b> revient. Avec une souris ou un téléphone : cliquez ou touchez.</li>
   </ol>
 </div>
+  </div>
+</section>
 
 <footer>
   <span class="en">Need help? Ask Julien.</span><span class="fr">Besoin d’aide ? Demandez à Julien.</span>
 </footer>
-</main>
 
 <script>
   // Language: the browser's, unless one was picked before.
