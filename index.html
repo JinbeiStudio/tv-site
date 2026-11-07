@@ -376,9 +376,10 @@
   </div>
   <div class="card reveal">
     <h3>Android</h3>
-    <p><span class="en">Phones, tablets and Android TV.</span><span class="fr">Téléphones, tablettes et Android TV.</span></p>
+    <p><span class="en">Phones and tablets: 64-bit. Android TV and TV boxes: 32-bit.</span><span class="fr">Téléphones et tablettes : 64 bits. Android TV et box TV : 32 bits.</span></p>
     <div class="actions">
-      <a class="btn" data-asset="android-arm64-v8a\.apk$" href="https://github.com/JinbeiStudio/jinbeistudio-tv/releases/latest/download/jinbei-studio-android-arm64-v8a.apk">APK</a>
+      <a class="btn" data-asset="android-arm64-v8a\.apk$" href="https://github.com/JinbeiStudio/jinbeistudio-tv/releases/latest/download/jinbei-studio-android-arm64-v8a.apk"><span class="en">64-bit</span><span class="fr">64 bits</span></a>
+      <a class="btn ghost" data-asset="android-armeabi-v7a\.apk$" href="https://github.com/JinbeiStudio/jinbeistudio-tv/releases/latest/download/jinbei-studio-android-armeabi-v7a.apk"><span class="en">32-bit</span><span class="fr">32 bits</span></a>
       <a class="more" href="#android"><span class="en">How to install</span><span class="fr">Comment installer</span></a>
     </div>
   </div>
@@ -464,16 +465,19 @@
 <details class="acc" id="android">
   <summary>Android (phone, tablet, Android TV)</summary>
   <div class="body"><ol class="en">
-    <li>Download the <code>arm64-v8a.apk</code> file (it suits almost every phone and tablet made in the last years).</li>
+    <li>On a phone or tablet, download the <b>64-bit</b> file (<code>arm64-v8a.apk</code>): it suits almost every phone and tablet made in the last years.</li>
     <li>Open it. Android asks to allow installs from your browser or file manager: accept, then <b>Install</b>.</li>
     <li>If Play Protect warns about the app, choose <b>Install anyway</b>.</li>
-    <li>On Android TV or Google TV, install <b>Downloader</b> and follow the Fire TV steps above.</li>
-  </ol><ol class="fr">
-    <li>Téléchargez le fichier <code>arm64-v8a.apk</code> (il convient à presque tous les téléphones et tablettes récents).</li>
+    <li>On Android TV, Google TV or a TV box (Xiaomi Mi Box, Nvidia Shield…), install <b>Downloader</b> and follow the Fire TV steps above: they use the <b>32-bit</b> file (<code>armeabi-v7a.apk</code>).</li>
+  </ol>
+  <div class="note en">“App not installed”? Try the other file: most TVs and TV boxes only take the 32-bit one, even with a 64-bit chip, and some recent phones only take the 64-bit one.</div>
+  <ol class="fr">
+    <li>Sur un téléphone ou une tablette, téléchargez le fichier <b>64 bits</b> (<code>arm64-v8a.apk</code>) : il convient à presque tous les téléphones et tablettes récents.</li>
     <li>Ouvrez-le. Android demande d’autoriser les installations depuis votre navigateur ou gestionnaire de fichiers : acceptez, puis <b>Installer</b>.</li>
     <li>Si Play Protect avertit à propos de l’app, choisissez <b>Installer quand même</b>.</li>
-    <li>Sur Android TV ou Google TV, installez <b>Downloader</b> et suivez les étapes de la Fire TV ci-dessus.</li>
-  </ol></div>
+    <li>Sur Android TV, Google TV ou une box TV (Xiaomi Mi Box, Nvidia Shield…), installez <b>Downloader</b> et suivez les étapes de la Fire TV ci-dessus : elles utilisent le fichier <b>32 bits</b> (<code>armeabi-v7a.apk</code>).</li>
+  </ol>
+  <div class="note fr">« Application non installée » ? Essayez l’autre fichier : la plupart des TV et box TV n’acceptent que le 32 bits, même avec une puce 64 bits, et certains téléphones récents seulement le 64 bits.</div></div>
 </details>
 
 <details class="acc" id="lg">
